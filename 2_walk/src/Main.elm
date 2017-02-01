@@ -40,7 +40,22 @@ subscriptions model =
 
 getModelSource : Model -> String
 getModelSource model =
-    Maybe.withDefault "" (List.head models)
+    let
+        fps =
+            3
+
+        frames =
+            8
+
+        time =
+            round (model.time / second * fps)
+
+        indexToTake =
+            rem time frames
+    in
+        List.drop (indexToTake - 1) models
+            |> List.head
+            |> Maybe.withDefault ""
 
 
 view : Model -> Html Msg
