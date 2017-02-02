@@ -14,11 +14,6 @@ type Msg
     = NoOp
 
 
-models : List String
-models =
-    List.map (\n -> ("T-Rex-0" ++ n ++ ".ply")) (List.range 0 7)
-
-
 init : ( Model, Cmd Msg )
 init =
     ( 0, Cmd.none )
@@ -38,19 +33,15 @@ subscriptions model =
 
 view : Model -> Html Msg
 view model =
-    let
-        modelsrc =
-            getModelSource model
-    in
-        scene []
-            [ entity
-                [ plymodel "src: url(/" ++ modelsrc ++ ")"
-                , scale 0.5 0.5 0.5
-                , position 0 -6 -13
-                , rotation -90 0 0
-                ]
-                []
+    scene []
+        [ entity
+            [ plymodel "src: url(/T-Rex-00.ply)"
+            , scale 0.5 0.5 0.5
+            , position 0 -6 -13
+            , rotation -90 0 0
             ]
+            []
+        ]
 
 
 main : Program Never Model Msg
