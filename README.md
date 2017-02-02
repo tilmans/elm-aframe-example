@@ -1,5 +1,10 @@
 # Simple VR with Elm and A-Frame
 
+## Try it
+[Step 0](https://tilmans.github.io/elm-aframe-example/0/)  
+[Step 1](https://tilmans.github.io/elm-aframe-example/1/)  
+[Step 2](https://tilmans.github.io/elm-aframe-example/2/)
+
 ## Getting started
 This repository is split up into multiple steps, corresponding to the tutorials. You can use the `0_start` directory as a starting point for your own projects. It contains the minimal webpack setup and page structure and has a working Elm app with an (empty) A-Frame scene. To use any of the steps:
 
