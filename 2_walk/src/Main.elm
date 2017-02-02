@@ -1,7 +1,9 @@
 module Main exposing (..)
 
 import Html exposing (..)
+import Html.Attributes exposing (id)
 import AFrame exposing (..)
+import AFrame.Primitives exposing (..)
 import AFrame.Primitives.Attributes exposing (..)
 import ModelLoader exposing (..)
 import AnimationFrame exposing (..)
@@ -42,10 +44,10 @@ getModelSource : Model -> String
 getModelSource model =
     let
         fps =
-            3
+            6
 
         frames =
-            8
+            List.length models
 
         time =
             round (model.time / second * fps)
@@ -53,22 +55,26 @@ getModelSource model =
         indexToTake =
             rem time frames
     in
-        List.drop (indexToTake - 1) models
-            |> List.head
-            |> Maybe.withDefault ""
+        "dino" ++ (toString indexToTake)
+
+
+getModels : List (Html Msg)
+getModels =
+    List.map2
+        (\n f -> assetitem [ src f, id ("dino" ++ (toString n)) ] [])
+        (List.range 0 (List.length models))
+        models
 
 
 view : Model -> Html Msg
 view model =
     let
-        filename =
-            getModelSource model
-
         modelsrc =
-            "src: url(/" ++ filename ++ ")"
+            "src: #" ++ (getModelSource model)
     in
         scene []
-            [ entity
+            [ assets [] ([] ++ getModels)
+            , entity
                 [ plymodel modelsrc
                 , scale 0.5 0.5 0.5
                 , position 0 -6 -13
