@@ -35,7 +35,7 @@ view : Model -> Html Msg
 view model =
     scene []
         [ entity
-            [ plymodel "src: url(T-Rex-00.ply)"
+            [ plymodel "src: url(./T-Rex-00.ply)"
             , scale 0.5 0.5 0.5
             , position 0 -6 -13
             , rotation -90 0 0
