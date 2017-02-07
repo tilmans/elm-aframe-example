@@ -61,7 +61,7 @@ getModelSource model =
 getModels : List (Html Msg)
 getModels =
     List.map2
-        (\n f -> assetitem [ src f, id ("dino" ++ (toString n)) ] [])
+        (\n f -> assetItem [ src f, id ("dino" ++ (toString n)) ] [])
         (List.range 0 (List.length models))
         models
 
